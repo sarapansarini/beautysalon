@@ -1,2 +1,0 @@
-# beautysalon
-Created with CodeSandbox
