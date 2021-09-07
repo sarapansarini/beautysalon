@@ -418,3 +418,14 @@ nav.show div.icon-close {
   clip-path: circle(); /* máscara para o formato da imagem*/
   margin-right: 0.5rem;
 }
+
+/* ------ SWIPER ------ */
+
+.swiper-slide {
+  height: auto;
+  padding: 4rem 1rem;
+}
+
+.swiper-pagination-bullet-active {
+  background: var(--base-color);
+}
