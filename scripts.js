@@ -84,11 +84,12 @@ function backToTop() {
 
 // menu ativo conforme a seção visível na página
 const sections = document.querySelectorAll("main section[id]");
+
 function activateMenuAtCurrentSection() {
-  const checkpoint = window.pageYOffset + (window.innerHeight / 8) * 4;
+  const checkpoint = window.pageYOffset + (window.innerHeight / 8) * 4; // números encontrados por teste
 
   for (const section of sections) {
-    const sectionTop = section.offsetTop;
+    const sectionTop = section.ofessetTop;
     const sectionHeight = section.offsetHeight;
     const sectionId = section.getAttribute("id");
 
