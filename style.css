@@ -1,7 +1,8 @@
-/*====  RESET ============================ */
+/* ------ RESET ------ */ /*  - remover ou alterar as configs criadas pelo navegador */
 * {
   margin: 0;
   padding: 0;
+
   box-sizing: border-box;
 }
 
@@ -18,7 +19,7 @@ img {
   height: auto;
 }
 
-/*====  VARIABLES ============================ */
+/* ------ VARIABLES ------ */
 :root {
   --header-height: 4.5rem;
 
@@ -34,14 +35,14 @@ img {
   --body-color: hsl(0 0% 98%);
 
   /* fonts */
-  --title-font-size: 1.875rem;
-  --subtitle-font-size: 1rem;
-
+  --title-font-size: 1.85rem;
+  --sub-title-font-size: 1rem;
   --title-font: "Poppins", sans-serif;
   --body-font: "DM Sans", sans-serif;
 }
 
-/*===  BASE ============================ */
+/* ------ BASE ------ */
+
 html {
   scroll-behavior: smooth;
 }
@@ -50,13 +51,13 @@ body {
   font: 400 1rem var(--body-font);
   color: var(--text-color);
   background: var(--body-color);
-  -webkit-font-smoothing: antialiased;
+  -webkit-font-smothing: antialiased; /* prefixevendor propriedade que vai deixar a linha mais fina) */
 }
 
 .title {
   font: 700 var(--title-font-size) var(--title-font);
   color: var(--title-color);
-  -webkit-font-smoothing: auto;
+  -webkit-font-smothing: auto;
 }
 
 .button {
@@ -79,8 +80,8 @@ body {
   height: 1px;
   background: linear-gradient(
     270deg,
-    hsla(var(--hue), 36%, 57%, 1),
-    hsla(var(--hue), 65%, 88%, 0.34)
+    /*270ª*/ hsla(var(--hue), 36%, 57%, 1) 0%,
+    hsla(var(--hue), 65%, 88%, 0.34) 100%
   );
 }
 
@@ -93,7 +94,8 @@ body {
   );
 }
 
-/*====  LAYOUT ============================ */
+/* ------ lAYOUT ------ */
+
 .container {
   margin-left: 1.5rem;
   margin-right: 1.5rem;
@@ -113,7 +115,7 @@ body {
 }
 
 .section .subtitle {
-  font-size: var(--subtitle-font-size);
+  font-size: var(--sub-title-font-size);
 }
 
 .section header {
@@ -138,12 +140,25 @@ body {
 }
 
 #header.scroll {
-  box-shadow: 0px 0px 12px rgba(0, 0, 0, 0.15);
+  background-color: --body-color;
+  box-shadow: 0px 0px 12px rgba(0, 0, 0, 0, 0.5);
+  transition: 0.2s;
 }
 
-/*====  LOGO ============================ */
+#header.scroll .logo span {
+  color: --base-color;
+  transition: 0.2s;
+}
+
+#header.scroll .icon-menu {
+  color: white;
+  transition: 0.2s;
+}
+
+/* ------ LOGO ------ */
+
 .logo {
-  font: 700 1.31rem var(--title-font);
+  font: 700 1.31rem var(--title-font); /* SE TROCAR A FONTE VAI TROCAR A LOGO TB */
   color: var(--title-color);
 }
 
@@ -154,8 +169,8 @@ body {
 .logo-alt span {
   color: var(--body-color);
 }
+/* ------ NAVIGATION ------ */
 
-/*====  NAVIGATION ============================ */
 nav {
   height: var(--header-height);
   display: flex;
@@ -187,13 +202,13 @@ nav ul li a::after {
   position: absolute;
   left: 0;
   bottom: -1.5rem;
-
   transition: width 0.2s;
 }
 
 nav ul li a:hover::after,
 nav ul li a.active::after {
   width: 100%;
+  font-weight: bold;
 }
 
 nav .menu {
@@ -207,7 +222,8 @@ nav .menu ul {
   display: none;
 }
 
-/* Mostrar menu */
+/* ------ SHOW MENU ------ */
+
 nav.show .menu {
   opacity: 1;
   visibility: visible;
@@ -220,20 +236,21 @@ nav.show .menu {
   position: fixed;
   top: 0;
   left: 0;
-
   display: grid;
   place-content: center;
 }
 
 nav.show .menu ul {
   display: grid;
+  /*colocar no centro da tela*/
 }
 
 nav.show ul.grid {
   gap: 4rem;
 }
 
-/* toggle menu */
+/* ------ TOGGLE MENU ------ */
+
 .toggle {
   color: var(--base-color);
   font-size: 1.5rem;
@@ -243,9 +260,8 @@ nav.show ul.grid {
 nav .icon-close {
   visibility: hidden;
   opacity: 0;
-
   position: absolute;
-  top: -1.5rem;
+  top: -1, 5rem;
   right: 1.5rem;
 
   transition: 0.2s;
@@ -257,7 +273,8 @@ nav.show div.icon-close {
   top: 1.5rem;
 }
 
-/*====  HOME ============================ */
+/* ------ HOME ------ */
+
 #home {
   overflow: hidden;
 }
@@ -265,20 +282,21 @@ nav.show div.icon-close {
 #home .container {
   margin: 0;
 }
-
 #home .image {
   position: relative;
 }
 
 #home .image::before {
+  /* criar elemento fantasma*/
   content: "";
   height: 100%;
   width: 100%;
   background: var(--base-color-second);
   position: absolute;
-  top: -16.8%;
+  top: -16.8%; /* é negativo porque quero que a imagem vá para cima, e é em %, peguei a % total da imagem, calculei quantos %
+    são o nº de pixeis que quero subir e me deu 16,8%*/
   left: 16.7%;
-  z-index: 0;
+  z-index: 0; /* eixo Z é o da profundidade*/
 }
 
 #home .image img {
@@ -297,7 +315,7 @@ nav.show div.icon-close {
   text-align: center;
 }
 
-#home .text h1 {
+#home text h1 {
   margin-bottom: 1rem;
 }
 
@@ -305,28 +323,30 @@ nav.show div.icon-close {
   margin-bottom: 2rem;
 }
 
-/*====  ABOUT ============================ */
+/* ------ ABOUT ------ */
+
 #about {
-  background: white;
+  background-color: #ffffff;
 }
 
 #about .container {
   margin: 0;
 }
-
 #about .image {
   position: relative;
 }
 
 #about .image::before {
+  /* criar elemento fantasma*/
   content: "";
   height: 100%;
   width: 100%;
   background: var(--base-color-second);
   position: absolute;
-  top: -8.3%;
+  top: -8.3%; /* é negativo porque quero que a imagem vá para cima, e é em %, peguei a % total da imagem, calculei quantos %
+        são o nº de pixeis que quero subir e me deu 16,8%*/
   left: -33%;
-  z-index: 0;
+  z-index: -1; /* eixo Z é o da profundidade*/
 }
 
 #about .image img {
@@ -343,7 +363,8 @@ nav.show div.icon-close {
   margin-right: 1.5rem;
 }
 
-/*====  SERVICES ============================ */
+/* ------ SERVICES ------ */
+
 .cards.grid {
   gap: 1.5rem;
 }
@@ -365,10 +386,11 @@ nav.show div.icon-close {
 
 .card .title {
   font-size: 1.5rem;
-  margin-bottom: 0.75rem;
+  margin-bottom: 0.75;
 }
 
-/*====  TESTIMONIALS ============================ */
+/* ------ TESTIMONIALS ------ */
+
 #testimonials {
   background: white;
 }
@@ -409,17 +431,19 @@ nav.show div.icon-close {
   display: flex;
   align-items: center;
   font-style: normal;
+  color: var(--text-color);
 }
 
 #testimonials cite img {
+  hight: 2rem;
   width: 2rem;
-  height: 2rem;
-  object-fit: cover;
-  clip-path: circle();
+  object-fit: cover; /* encaixe a imagem cobrindo todo o espaço disponível */
+  clip-path: circle(); /* máscara para o formato da imagem*/
   margin-right: 0.5rem;
 }
 
-/* swiper */
+/* ------ SWIPER ------ */
+
 .swiper-slide {
   height: auto;
   padding: 4rem 1rem;
@@ -427,14 +451,15 @@ nav.show div.icon-close {
 
 .swiper-pagination-bullet {
   width: 0.75rem;
-  height: 0.75rem;
+  height: 00.75rem;
 }
 
 .swiper-pagination-bullet-active {
   background: var(--base-color);
 }
 
-/*====  CONTACT ============================ */
+/* ------ CONTACT ------ */
+
 #contact .grid {
   gap: 4rem;
 }
@@ -446,7 +471,7 @@ nav.show div.icon-close {
 #contact .button i,
 #contact ul li i {
   font-size: 1.5rem;
-  margin-right: 0.625rem;
+  margin-right: 0.635rem;
 }
 
 #contact ul.grid {
@@ -462,9 +487,10 @@ nav.show div.icon-close {
   color: var(--base-color);
 }
 
-/*====  FOOTER ============================ */
+/* ------ FOOTER ------ */
+
 footer {
-  background: var(--base-color);
+  background-color: var(--base-color);
 }
 
 footer.section {
@@ -486,21 +512,18 @@ footer i {
   color: var(--text-color-light);
 }
 
-footer .social {
-  grid-auto-flow: column;
-  width: fit-content;
-}
-
 footer .social a {
+  margin-right: 2rem;
   transition: 0.3s;
   display: inline-block;
 }
 
 footer .social a:hover {
-  transform: translateY(-8px);
+  transform: translateY(-5px);
 }
 
-/* Back to top */
+/* ------ BACK TO TOP ------ */
+
 .back-to-top {
   background: var(--base-color);
   color: var(--text-color-light);
@@ -528,16 +551,16 @@ footer .social a:hover {
   transform: translateY(0);
 }
 
-/*========= MEDIA QUERIES =========*/
-/* extra large devices: 1200 > */
+/* ------ RESPONSIVE ------ */
+/* @ significa at */
+
+/* extra large devices */
 @media (min-width: 1200px) {
-  /* reusable classes */
   .container {
     max-width: 1120px;
     margin-left: auto;
     margin-right: auto;
   }
-
   .section {
     padding: 10rem 0;
   }
@@ -554,7 +577,6 @@ footer .social a:hover {
     height: 3.125rem;
   }
 
-  /* navigation */
   nav .menu {
     opacity: 1;
     visibility: visible;
@@ -580,12 +602,12 @@ footer .social a:hover {
     display: none;
   }
 
-  /* layout */
   main {
     margin-top: var(--header-height);
   }
 
-  /* home */
+  /* HOME */
+
   #home .container {
     grid-auto-flow: column;
     justify-content: space-between;
@@ -597,20 +619,22 @@ footer .social a:hover {
   }
 
   #home .text {
-    order: 0;
+    order: 0; /*order só funciona com caixa grid ou flex*/
     max-width: 24rem;
     text-align: left;
   }
 
   /* about */
+
   #about .container {
     margin: 0 auto;
     grid-auto-flow: column;
   }
 
   /* services */
+
   .cards {
-    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-columns: 1fr 1fr 1fr; /* frações, não necessariamente precisam ser iguais */
   }
 
   .card {
@@ -619,12 +643,14 @@ footer .social a:hover {
   }
 
   /* testimonials */
+
   #testimonials .container {
     margin-left: auto;
     margin-right: auto;
   }
 
   /* contact */
+
   #contact .container {
     grid-auto-flow: column;
     align-items: center;
@@ -635,6 +661,7 @@ footer .social a:hover {
   }
 
   /* footer */
+
   footer.section {
     padding: 3.75rem 0;
   }
@@ -649,12 +676,11 @@ footer .social a:hover {
     font-size: 2.25rem;
   }
 }
-/* large devices: 1023 > */
-/* large devices: 992 > */
+
+/* mediun devices: 992 > */
 @media (min-width: 992px) {
   :root {
     --title-font-size: 2.25rem;
-    --subtitle-font-size: 1.125rem;
+    --sub-title-font-size: 1.125rem;
   }
 }
-/* medium devices: 767 > */
