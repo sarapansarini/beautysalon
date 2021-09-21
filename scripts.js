@@ -89,7 +89,7 @@ function activateMenuAtCurrentSection() {
   const checkpoint = window.pageYOffset + (window.innerHeight / 8) * 4; // números encontrados por teste
 
   for (const section of sections) {
-    const sectionTop = section.ofessetTop;
+    const sectionTop = section.offsetTop;
     const sectionHeight = section.offsetHeight;
     const sectionId = section.getAttribute("id");
 
